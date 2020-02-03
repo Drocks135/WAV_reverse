@@ -51,6 +51,7 @@ int main(int argc, char** argv){
 	}
 
 	write_file(argv[2], buffer, fileSize);
-
+	
+	free(buffer);
 	return 0;
 }
