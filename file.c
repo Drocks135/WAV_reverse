@@ -2,7 +2,11 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+/**********************************************************************
+ * This function opens up a file and writes it to a buffer
+ * @param filename the name of the file to open
+ * @param buffer the pointer to write the file to
+ ********************************************************************/
 size_t read_file(char* filename, char **buffer){
 	//Open a file pointer to read from
 	FILE *fptr;
@@ -33,7 +37,12 @@ size_t read_file(char* filename, char **buffer){
 
 	return size;
 }
-
+/**********************************************************************
+ * This function writes the data of buffer to an output file
+ * @param filename the name of the file to output to
+ * @param buffer the buffer to write out to a file
+ * @param size the amount of data to write
+ *********************************************************************/
 size_t write_file(char* filename, char *buffer, size_t size){
 	FILE* fptr = fopen(filename, "w");
 	fwrite(buffer, sizeof(char), size, fptr);

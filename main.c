@@ -4,8 +4,16 @@
 #include <string.h>
 #include "file.h"
 #include "wav.h"
-
+/**********************************************************************
+ *This main function reverses the audio of a .wav file
+ *********************************************************************/
 int main(int argc, char** argv){
+	if (argc != 3){
+		printf(" Program called incorrectly. Please use ./a.out" 
+				" input file name, output file name as "
+				" arguments\n");
+		return 1;
+	}
 	char* buffer;
 
 	int fileSize;
@@ -17,7 +25,7 @@ int main(int argc, char** argv){
 	char exp[4] = "RIFF";
 	for(int i = 0; i < 4; i++){
 		if(song -> riff[i] != exp[i]){
-			printf("This file isn't a wave file");
+			printf("This file isn't a wave file\n");
 			return 1;
 			}
 	}	
@@ -25,14 +33,16 @@ int main(int argc, char** argv){
 
 	printf("File: %s\n", argv[1]);
 	printf("===============\n");
-	printf("- File size is %i. Read %i bytes.\n", fileSize, song -> sizeOfData);
+	printf("- File size is %i. Read %i bytes.\n", 
+			fileSize, song -> sizeOfData);
 	printf("- Format is %s with format data length %i\n", 
 			song -> format, song -> formatLength);
 	printf("- Format is %s format\n", song -> wave);
 	printf("- %i channel(s) with a sample rate of %i\n", 
 			song -> numChannels, song -> sampleRate);
 	printf("- %i byte rate, %i block alignment, %i bits per sample\n",
-			song -> byteRate, song -> blockAlignment, song -> bitsPerSample);
+			song -> byteRate, song -> blockAlignment, 
+			song -> bitsPerSample);
 	printf("- %s is data and data size is %i\n", 
 			song -> dataHeader, song -> sizeOfData);
 
