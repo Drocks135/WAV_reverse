@@ -1,3 +1,5 @@
+//Collaborated with Aiden Marten
+
 #include <stdio.h>
 #include <string.h>
 #include "file.h"
@@ -35,7 +37,7 @@ int main(int argc, char** argv){
 			song -> dataHeader, song -> sizeOfData);
 
 
-	//Here starts the reverse process
+	//This area is the actual reversing of the data
 	int dataStart = 44;
 	int chunkSize = song -> numChannels * song -> bitsPerSample;
 	int dataEnd = 44 + song -> sizeOfData - chunkSize;
